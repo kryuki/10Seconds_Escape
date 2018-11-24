@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AlwaysLooksStraight.cs" />
      <Compile Include="Assets\Scripts\BGMManager.cs" />
+     <Compile Include="Assets\Scripts\CountDownTimerBGMManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\JudgeGoal.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

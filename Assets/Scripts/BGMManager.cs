@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//心臓の鼓動のBGMの管理をするスクリプトです
+//心臓の鼓動のBGMの管理をするスクリプト
 public class BGMManager : MonoBehaviour {
     GameManager gameManager;
     PlayerController playerController;

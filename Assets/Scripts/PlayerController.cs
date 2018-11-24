@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour {
         playerSpeed = GetSpeed();
 
         //BGMの再生速度を調整する（プレイ中のみ）
-
         audioSource.pitch = playerSpeed / 1000;
 	}
     
