@@ -17,17 +17,21 @@ public class PlayerController : MonoBehaviour {
     public float playerSpeed = 0;
 
     //オーディオ関係
-    [SerializeField]
     AudioSource audioSource;
 
-	void Update () {
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update () {
         //プレイヤーの位置を取得（マウスの位置）
         position_x = Input.mousePosition.x;
         position_y = Input.mousePosition.y;
 
         playerSpeed = GetSpeed();
 
-        //BGMの再生速度を調整する
+        //BGMの再生速度を調整する（プレイ中のみ）
+
         audioSource.pitch = playerSpeed / 1000;
 	}
     

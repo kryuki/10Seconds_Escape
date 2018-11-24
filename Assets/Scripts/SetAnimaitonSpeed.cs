@@ -17,7 +17,7 @@ public class SetAnimaitonSpeed : MonoBehaviour {
 	}
 
 	void Update () {
-        speedValue = playerController.playerSpeed / 100;
+        speedValue = playerController.playerSpeed / 200;
         if (speedValue < 0.01f) speedValue = minAnimationSpeedValue;  //アニメーションの再生スピードの最小値
         this.animator.speed = this.speedValue;
 	}

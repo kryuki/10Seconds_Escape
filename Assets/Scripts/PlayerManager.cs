@@ -14,8 +14,10 @@ public class PlayerManager : MonoBehaviour {
     //爆発エフェクト用
     public SpriteRenderer explosion;
 
-    [SerializeField] GameManager gameManager;
+    GameManager gameManager;
+
 	void Start () {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();  //AudioSourceを取得
 	}
 

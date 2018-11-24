@@ -12,12 +12,24 @@ public class GameManager : MonoBehaviour {
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
 	}
     
+    //Startボタンを押した
     public void PressStartButton() {
+        StartGame();
+    }
+
+    //Goalボタンを押した
+    public void PressGoalButton() {
+        StopGame();
+    }
+
+    //ゲームを開始
+    void StartGame() {
         isGamePlaying = true;
         playerManager.explosion.enabled = false;
     }
 
-    public void PressGoalButton() {
+    //ゲームを終了
+    public void StopGame() {
         isGamePlaying = false;
     }
 }
