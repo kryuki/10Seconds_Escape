@@ -18,8 +18,15 @@ public class GameManager : MonoBehaviour {
     private float count = 10f;
 
     //タイムオーバーの爆発音用
-    AudioSource audioSource;
-    
+    [SerializeField] AudioSource audioSource;
+    //スタート/ゴール/爆発用/タイトル画面スタート音声
+    [SerializeField] AudioClip startVoice;
+    [SerializeField] AudioClip goalVoice;
+    [SerializeField] AudioClip timeLimitExplosionSound;
+    [SerializeField] AudioClip gameStartOnTitle;
+    //爆発時の雄叫び用
+    [SerializeField] AudioSource audioSourceForCry;
+
     GameObject[] bombs;  //全爆弾を入れるためのリスト
     [SerializeField] Sprite explosionSprite;  //タイムオーバーしたときのSprite
     [SerializeField] Sprite bombSprite;  //爆弾の平常時のSprite
@@ -28,7 +35,6 @@ public class GameManager : MonoBehaviour {
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         countDownTimerTextSeconds = GameObject.Find("TextCountDownTimerSeconds").GetComponent<Text>();
         countDownTimerTextMiliSeconds = GameObject.Find("TextCountDownTimerMiliSeconds").GetComponent<Text>();
-        audioSource = GetComponent<AudioSource>();
         bombs = GameObject.FindGameObjectsWithTag("Bomb");
     }
 
@@ -56,7 +62,10 @@ public class GameManager : MonoBehaviour {
             countDownTimerTextMiliSeconds.text = "00";
 
             //タイムオーバーの爆発音を鳴らす
+            audioSource.clip = timeLimitExplosionSound;
             audioSource.Play();
+            //敗北の雄叫びを叫ぶ
+            audioSourceForCry.Play();
 
             //画面上にある爆弾のSpriteをすべて爆発画像に変える
             foreach(GameObject bom in bombs) {
@@ -80,6 +89,9 @@ public class GameManager : MonoBehaviour {
     void StartGame() {
         isGamePlaying = true;
         playerManager.explosion.enabled = false;
+        //開始の雄叫びを上げる
+        audioSource.clip = startVoice;
+        audioSource.Play();
     }
 
     //ゲームをリセット
@@ -96,5 +108,24 @@ public class GameManager : MonoBehaviour {
     //ゲームを終了
     public void StopGame() {
         isGamePlaying = false;
+        //終了の雄叫びを上げる
+        audioSource.clip = goalVoice;
+        audioSource.Play();
+        //次のステージに遷移する
+        StartCoroutine(NextScene());
     }
+
+    private IEnumerator NextScene() {
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    //タイトル画面のゲーム開始ボタンを押した
+    public void PressStartButtonOnTitle() {
+        audioSource.clip = gameStartOnTitle;
+        audioSource.Play();
+        //次のステージに遷移する
+        StartCoroutine(NextScene());
+    }
+
 }

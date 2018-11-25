@@ -10,15 +10,17 @@ public class PlayerManager : MonoBehaviour {
     private Vector3 screenToWorldPointPosition;
 
     //音声用
-    private AudioSource audioSource;
+    private AudioSource[] audioSources;
     //爆発エフェクト用
+    [HideInInspector]
     public SpriteRenderer explosion;
-
+ 
     GameManager gameManager;
 
 	void Start () {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioSource = GetComponent<AudioSource>();  //AudioSourceを取得
+        audioSources = GetComponents<AudioSource>();
+        explosion = GameObject.Find("Explosion").GetComponent<SpriteRenderer>();
 	}
 
 	void Update () {
@@ -42,8 +44,10 @@ public class PlayerManager : MonoBehaviour {
         //爆弾もしくは壁に当たった
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Wall")) {
             gameManager.isGamePlaying = false;  //ゲームはプレイ中でない
-            //爆発音を出す
-            audioSource.Play();
+            //爆発音および死亡の雄叫びを出す
+            foreach (AudioSource audioSource in audioSources) {
+                audioSource.Play();
+            }
             //爆発の画像を表示する
             explosion.enabled = true;
             explosion.transform.position = screenToWorldPointPosition;
