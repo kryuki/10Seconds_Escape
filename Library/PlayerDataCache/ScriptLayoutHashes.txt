@@ -4,6 +4,10 @@ C:/Users/kobay/Desktop/10seconds_escape/Build
 SceneListBegin?
 Assets/Scenes/TitleScene.unity
 Assets/Scenes/MainScene1.unity
+Assets/Scenes/MainScene2.unity
+Assets/Scenes/MainScene3.unity
+Assets/Scenes/MainScene4.unity
+Assets/Scenes/EndingScene.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 7995fb8bd685b648cf83168001bca76c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -145,7 +149,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 e91d080c024fb2ca17f962ed1a0da33f Assembly-CSharp.dll:.PlayerManager
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-0f4f19b2416753550cc7c2e9921bd90b Assembly-CSharp.dll:.GameManager
+e56a257e7566143f6aa0fb7877d1282c Assembly-CSharp.dll:.GameManager
 3191f69b1bc72ed8513f9226015c80ff Assembly-CSharp.dll:.BGMManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CountDownTimerBGMManager
 5a155915c46f1d714650755ed6f48ac8 Assembly-CSharp.dll:.SetAnimaitonSpeed

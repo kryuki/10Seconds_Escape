@@ -117,7 +117,11 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator NextScene() {
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().name != "EndingScene") {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        } else {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 
     //タイトル画面のゲーム開始ボタンを押した
